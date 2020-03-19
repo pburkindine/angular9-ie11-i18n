@@ -1,0 +1,22 @@
+{
+  "npmScope": "ie11-i18n",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "ie11-i18n": {
+      "tags": []
+    },
+    "ie11-i18n-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ie11-i18n"]
+    }
+  }
+}

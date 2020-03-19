@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "projects": {
+    "ie11-i18n": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/ie11-i18n",
+      "sourceRoot": "apps/ie11-i18n/src",
+      "prefix": "ie11-i18n",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ie11-i18n",
+            "index": "apps/ie11-i18n/src/index.html",
+            "main": "apps/ie11-i18n/src/main.ts",
+            "polyfills": "apps/ie11-i18n/src/polyfills.ts",
+            "tsConfig": "apps/ie11-i18n/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/ie11-i18n/src/favicon.ico",
+              "apps/ie11-i18n/src/assets"
+            ],
+            "styles": ["apps/ie11-i18n/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ie11-i18n/src/environments/environment.ts",
+                  "with": "apps/ie11-i18n/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ie11-i18n:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ie11-i18n:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ie11-i18n:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ie11-i18n/tsconfig.app.json",
+              "apps/ie11-i18n/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ie11-i18n/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ie11-i18n/jest.config.js",
+            "tsConfig": "apps/ie11-i18n/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/ie11-i18n/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ie11-i18n-e2e": {
+      "root": "apps/ie11-i18n-e2e",
+      "sourceRoot": "apps/ie11-i18n-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ie11-i18n-e2e/cypress.json",
+            "tsConfig": "apps/ie11-i18n-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ie11-i18n:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ie11-i18n:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/ie11-i18n-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/ie11-i18n-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "69d1f73e-9a0d-4b97-96fb-2c876b8a2688"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "ie11-i18n"
+}
