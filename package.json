@@ -11,6 +11,7 @@
     "lint": "nx workspace-lint && ng lint",
     "i18n": "ng xi18n --output-path src/locale",
     "start:server": "http-server -p 8080 -c-1 dist/apps/ie11-i18n",
+    "ie11-test": "ng build --configuration=production && npm run start:server",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",

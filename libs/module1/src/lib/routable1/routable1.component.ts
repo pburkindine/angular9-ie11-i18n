@@ -10,6 +10,8 @@ import {
   Enum8,
   Enum9
 } from '../constants';
+import { MatDialog } from '@angular/material/dialog';
+import { Modal1Component } from '../modal1/modal1.component';
 
 @Component({
   selector: 'ie11-i18n-routable1',
@@ -18,24 +20,22 @@ import {
 })
 export class Routable1Component implements OnInit {
   val1: Enum1;
-  val2: Enum2;
   val3: Enum3;
-  val4: Enum4;
   val5: Enum5;
-  val6: Enum6;
   val7: Enum7;
-  val8: Enum8;
   val9: Enum9;
+
+  constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
     this.val1 = Enum1.A;
-    this.val2 = Enum2.E;
     this.val3 = Enum3.I;
-    this.val4 = Enum4.J;
     this.val5 = Enum5.N;
-    this.val6 = Enum6.R;
     this.val7 = Enum7.S;
-    this.val8 = Enum8.W;
     this.val9 = Enum9.Z;
+  }
+
+  openModal1(): void {
+    this.matDialog.open(Modal1Component);
   }
 }
