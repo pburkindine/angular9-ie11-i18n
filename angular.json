@@ -119,6 +119,34 @@
           }
         }
       }
+    },
+    "module1": {
+      "projectType": "library",
+      "root": "libs/module1",
+      "sourceRoot": "libs/module1/src",
+      "prefix": "ie11-i18n",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/module1/tsconfig.lib.json",
+              "libs/module1/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/module1/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/module1/jest.config.js",
+            "tsConfig": "libs/module1/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/module1/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

@@ -17,6 +17,9 @@
     "ie11-i18n-e2e": {
       "tags": [],
       "implicitDependencies": ["ie11-i18n"]
+    },
+    "module1": {
+      "tags": []
     }
   }
 }
