@@ -3,17 +3,17 @@ import { ContentType } from '../../constants/content-type';
 
 @Component({
   selector: 'ie11-i18n-modal1',
-  templateUrl: './modal1.component.html',
-  styleUrls: ['./modal1.component.css']
+  templateUrl: './modal1.component.html'
 })
 export class Modal1Component {
-  contentType: ContentType;
+  ContentType = ContentType;
 
-  openContent1(): void {
-    this.contentType = ContentType.CONTENT_1;
-  }
-
-  openContent2(): void {
-    this.contentType = ContentType.CONTENT_2;
-  }
+  contentZone1 = ContentType.CONTENT_1;
+  contentZone2 = ContentType.CONTENT_3;
+  contentZone3 = ContentType.CONTENT_5;
+  contentZone4 = ContentType.CONTENT_7;
+  contentZone5 = ContentType.CONTENT_9;
+  contentZone6 = ContentType.CONTENT_11;
+  contentZone7 = ContentType.CONTENT_13;
+  contentZone8 = ContentType.CONTENT_15;
 }

@@ -5,8 +5,7 @@ import { Modal1Component } from '../modal1/modal1.component';
 
 @Component({
   selector: 'ie11-i18n-routable1',
-  templateUrl: './routable1.component.html',
-  styleUrls: ['./routable1.component.css']
+  templateUrl: './routable1.component.html'
 })
 export class Routable1Component implements OnInit {
   vals: SwitchEnum[] = [];
