@@ -47,18 +47,12 @@ for (let i = 0; i < 100; i = i + 1) {
 
 fs.writeFile('./routable1.html', routable1Template, err => console.log(err));
 
-// Content1
-let content1Template = '';
-for (let i = 0; i < 100; i = i + 1) {
-  content1Template = content1Template + populateTemplate('Content1', i);
+// Content
+for (let c = 1; c < 17; c = c + 1) {
+  let contentTemplate = '';
+  for (let i = 0; i < 100; i = i + 1) {
+    contentTemplate = contentTemplate + populateTemplate(`Content${c}`, i);
+  }
+
+  fs.writeFile(`./content${c}.html`, contentTemplate, err => console.log(err));
 }
-
-fs.writeFile('./content1.html', content1Template, err => console.log(err));
-
-// Content2
-let content2Template = '';
-for (let i = 0; i < 100; i = i + 1) {
-  content2Template = content2Template + populateTemplate('Content2', i);
-}
-
-fs.writeFile('./content2.html', content2Template, err => console.log(err));
