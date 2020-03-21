@@ -3,7 +3,8 @@ import { ContentType } from '../../constants/content-type';
 
 @Component({
   selector: 'ie11-i18n-modal1',
-  templateUrl: './modal1.component.html'
+  templateUrl: './modal1.component.html',
+  styleUrls: ['./modal1.component.css']
 })
 export class Modal1Component {
   ContentType = ContentType;
