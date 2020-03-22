@@ -1,0 +1,8 @@
+
+      <trans-unit id="ProviderMeasuresGroupPracticePerformance__cancer-screening__measure-label" datatype="html">
+        <source>{VAR_SELECT, select, MIPS_GRP_113_overall {Screening for colorectal (colon or rectum) cancer} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../../libs/features/provider-measures/src/lib/components/group-practice/performance/performance.component.html</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>

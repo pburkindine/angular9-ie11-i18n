@@ -1,0 +1,577 @@
+<ccxp-provider-measures-container
+  [provider]="provider"
+  [providerType]="providerType"
+  [dialogRef]="dialogRef"
+>
+  <div content-type="category-title" i18n="@@General__performance"
+    >Performance</div
+  >
+  <!-- prettier-ignore -->
+  <div content-type="category-description">
+    <ccxp-read-more-explicit class="ProviderMeasures__section-description"
+      ><span
+        content-type="visible-text"
+        i18n="@@ProviderMeasuresGroupPracticePerformance__category-description-1"
+        >Performance scores and star ratings are based on information this group reported to Medicare based on a set of specific criteria and guidelines. Groups can choose measures to report to Medicare that best reflect their practice. It's important to understand that:<div class="ProviderMeasures__section-description-spacer">&nbsp;</div>Not all groups report the same information to Medicare, because not all groups provide the same services to patients. Also, not all services or types of care have measures available to report to Medicare.<div class="ProviderMeasures__section-description-spacer">&nbsp;</div>Reporting more or less informati</span
+      >
+      <span content-type="hidden-text" i18n="@@ProviderMeasuresGroupPracticePerformance__category-description-2">on is not a reflection of this group’s quality.<div class="ProviderMeasures__section-description-spacer">&nbsp;</div>The performance information is not a complete picture of the types of services this group provides.<div class="ProviderMeasures__section-description-spacer">&nbsp;</div>The information on this page is just a snapshot of some of the care this group provided to people with Medicare in 2017.</span
+      ></ccxp-read-more-explicit
+    >
+    <a
+      class="ProviderMeasures__category-description-link"
+      i18n="@@ProviderMeasuresGroupPracticePerformance__category-description-link"
+      href="#"
+      >Learn more about quality performance scores</a
+    >
+  </div>
+  <div *ngIf="measuresResult$ | async as result" content-type="content">
+    <div class="ProviderMeasures__measures">
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            generalHealthMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__general-health-label"
+          >Preventive care: General health</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__general-health-description"
+          >Some groups do a better job than others providing care that keeps patients healthy. Medicare gave this group a star rating based on how well the group did on each measure compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__general-health__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_110_overall {Getting a flu shot during flu season}
+                  MIPS_GRP_111_overall {Making sure older adults have gotten a pneumonia vaccine}
+                  MIPS_GRP_048_overall {Evaluating loss of bladder control in older women}
+                  MIPS_GRP_128_overall {Screening for an unhealthy body weight and developing a follow-up plan}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__general-health__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_110_overall {More stars are better because it means more of this group's patients got a flu shot during flu season (October 1 to March 31) when appropriate. Getting a flu shot during flu season can help prevent the flu and the problems the flu causes. To give this group a star rating, Medicare looked at the percentage of this group's patients who could get the flu shot and either got one from a clinician in this group or from someone else during flu season.}
+                  MIPS_GRP_111_overall {More stars are better because it means more of this group's older patients got a pneumonia vaccine when appropriate. Pneumonia is a common cause of illness and death in older adults and people with certain health conditions. A pneumonia vaccine helps prevent pneumonia and problems pneumonia causes. To give this group a star rating, Medicare looked at the percentage of this group's patients who had ever gotten a pneumonia vaccine.}
+                  MIPS_GRP_048_overall {More stars are better because it means clinicians in this group evaluated more women for loss of bladder control (urinary incontinence). Asking about involuntary leakage of urine is important because patients may not volunteer information regarding loss of bladder control. To give this group a star rating, Medicare looked at the percentage of this group’s female patients ages 65 and older who were evaluated for loss of bladder control.}
+                  MIPS_GRP_128_overall {More stars are better because it means clinicians in this group checked more patients' weight and created a follow-up plan if their weight was not in the normal range for their body type and height. When patients have a higher or lower than normal weight for their body type and height, they are at risk for certain health conditions such as heart disease, diabetes, or malnourishment. To give this group a star rating, Medicare looked at the percentage of this group's patients who had their weight checked at least once in the last six months. And, if the patient's weight was higher or lower than normal for his or her body type and height, had a follow-up plan documented.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            cancerScreeningMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__cancer-screening-label"
+          >Preventive care: Cancer screening</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__cancer-screening-description"
+          >Some groups do a better job than others screening patients for cancer. Medicare gave this group a star rating on each measure based on how well the group screened patients for cancer compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__cancer-screening__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_113_overall {Screening for colorectal (colon or rectum) cancer}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__cancer-screening__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_113_overall {More stars are better because it means clinicians in this group screened more older patients for colorectal cancer. All patients ages 50 and older should be checked for colorectal cancer. To give this group a star rating, Medicare looked at the percentage of this group's patients who were appropriately screened for colorectal cancer using one of three tests (fecal occult blood test, flexible sigmoidoscopy, or colonoscopy).}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            patientSafetyMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__patient-safety-label"
+          >Patient safety</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__patient-safety-description"
+          >Some groups do a better job than others preventing harm to patients by reducing risk of accidents and medical error. Medicare gave this group a star rating on each measure based on how well the group followed recommended care to keep patients safe compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__patient-safety__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_318_overall {Screening older patients’ risk of falling}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__patient-safety__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_318_overall {More stars are better because it means clinicians in this group checked more older patients for their risk of falling. Older patients can have a higher risk of falling and seriously injuring themselves. Clinicians can check patients’ vision, muscle strength, and balance to determine if they are at risk of falling. If patients know they have a high risk of falling, they can take preventive steps to avoid future falls. To give this group a star rating, Medicare looked at the percentage of this group’s older patients who were checked for risk of falling.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            behavioralHealthMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__behavioral-health-label"
+          >Behavioral health</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__behavioral-health-description"
+          >Some groups do a better job than others screening and providing care for patients with mental health or substance use disorders. Medicare gave this group a star rating on each measure based on how well the group provided the recommended care for mental health or substance use disorders compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__behavioral-health__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_134_overall {Screening for depression and developing a follow-up plan}
+                  MIPS_GRP_226_overall {Screening for tobacco use and providing help quitting when needed}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__behavioral-health__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_134_overall {More stars are better because it means clinicians in this group screened more patients for depression and created a follow-up plan for patients with depression. Managing depression can lead to better coping and outcomes for patients. To give this group a star rating, Medicare looked at the percentage of this group's patients who were checked for depression and, if they have depression, received a follow-up plan.}
+                  MIPS_GRP_226_overall {More stars are better because it means clinicians in this group provided counseling to more patients who used tobacco and encouraged them to quit. Quitting tobacco lowers a patient's chance of getting heart and lung diseases. To give this group a star rating, Medicare looked at the percentage of this group's patients who were asked if they used tobacco at least once in the last two years. If patients were using tobacco, the clinician spoke with them about ways to help them quit using tobacco.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            carePlanningMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__care-planning-label"
+          >Care planning</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__care-planning-description"
+          >Some groups do a better job than others developing and discussing care plans. Medicare gave this group a star rating on each measure based on how well the group developed and discussed care plans with patients compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__care-planning__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_047_overall {Older patients who have an advanced care plan or someone to help make medical decisions for them when they can’t}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__care-planning__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_047_overall {More stars are better because it means more of this group's older patients have an advanced care plan or someone to help make medical decisions for them when they can’t. It is important that patients tell a clinician their wishes regarding medical treatment as soon as possible. Having an advanced care plan or someone to help make medical decisions if the patient is unable to means that a clinician can follow a patient’s wishes. To give this group a star rating, Medicare looked at the percentage of this group’s patients who have a care plan or someone to help make medical decisions for them when they can’t.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            heartDiseaseMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__heart-disease-label"
+          >Heart disease</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__heart-disease-description"
+          >Some groups do a better job than others providing care that gets the best results for patients with heart disease. Medicare gave this group a star rating on each measure based on how well the group provided the recommended care to patients with heart disease compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__heart-disease__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_006_overall {Giving antiplatelet blood thinners to patients with heart disease}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__heart-disease__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_006_overall {More stars are better because it means more of this group's patients with heart disease got antiplatelet blood thinning medicine when appropriate. Antiplatelet blood thinners prevent cells called platelets from clumping together to form clots. Antiplatelet blood thinners such as aspirin are often used to prevent stroke, heart attack, and other heart problems. To give this group a star rating, Medicare looked at the percentage of this group’s patients with heart disease who got antiplatelet blood thinning medicine when appropriate.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            respiratoryDiseaseMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__respiratory-diseases-label"
+          >Respiratory diseases</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__respiratory-diseases-description"
+          >Some groups do a better job than others providing care that is known to get the best results for patients with respiratory diseases, such as asthma and COPD. Medicare gave this group a star rating on each measure based on how well the group provided the recommended care to patients with respiratory diseases compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__respiratory-diseases__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_051_overall {Spirometry evaluations in patients with COPD}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__respiratory-diseases__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_051_overall {More stars are better because it means clinicians in this group documented spirometry evaluations in more patients who have chronic obstructive pulmonary disease (COPD), a lung disease that makes breathing hard. Spirometry is a type of test that can evaluate lung function and test how well a person can breathe. Checking the lung function of patients can help diagnose COPD and is important to determine the best treatments for patients with COPD. To give this group a star rating, Medicare looked at the percentage of this group’s patients with a diagnosis of COPD who had spirometry results documented in their medical record.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        class="ProviderMeasures__measures-section"
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            mipsPerformanceResultKey,
+            diabetesMeasureIds
+          ) as measures
+        "
+      >
+        <!-- prettier-ignore -->
+        <h3
+          class="ProviderMeasures__section-title"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__diabetes-label"
+          >Diabetes</h3
+        >
+        <!-- prettier-ignore -->
+        <ccxp-read-more
+          class="ProviderMeasures__section-description"
+          i18n="@@ProviderMeasuresGroupPracticePerformance__diabetes-description"
+          >Some groups do a better job than others providing care to get the best results for patients with diabetes. Medicare gave this group a star rating on each measure based on how well the group provided the recommended care to patients with diabetes compared to the best performers.</ccxp-read-more
+        >
+        <mat-accordion multi>
+          <ng-container *ngFor="let measure of measures">
+            <ccxp-provider-measures-state-national-row
+              [hasMeasureDescription]="true"
+              [showStateValue]="false"
+              [showNationalValue]="false"
+              [useProjectedValues]="true"
+            >
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-label"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__diabetes__measure-label"
+                >{measure.measureId, select,
+                  MIPS_GRP_117_overall {Eye exam for patients with diabetes}}</span
+              >
+              <!-- prettier-ignore -->
+              <ccxp-higher-or-lower-is-better
+                content-type="measure-helper-text"
+                [higherIsBetterPhrase]="HigherIsBetterPhrase.MORE_STARS_ARE_BETTER"
+              ></ccxp-higher-or-lower-is-better>
+              <!-- prettier-ignore -->
+              <span
+                content-type="measure-description"
+                i18n="@@ProviderMeasuresGroupPracticePerformance__diabetes__measure-description"
+                >{measure.measureId, select,
+                  MIPS_GRP_117_overall {More stars are better because it means clinicians in this group gave an eye exam to more patients with diabetes. Diabetes is characterized by high blood sugar levels. Untreated diabetes can cause many problems, including eye damage, vision loss, and blindness. Retinal or dilated eye exams are recommended yearly for patients with both type 1 and type 2 diabetes. To give this group a star rating, Medicare looked at the percentage of this group’s patients with diabetes who received a retinal or dilated eye exam.}}</span
+              >
+              <span content-type="measure-value"
+                ><ccxp-star-rating
+                  [stars]="5"
+                  [rating]="measure.value"
+                ></ccxp-star-rating
+              ></span>
+            </ccxp-provider-measures-state-national-row> </ng-container
+        ></mat-accordion>
+      </div>
+
+      <div
+        *ngIf="
+          getMeasuresWithValueForSection(
+            result,
+            qcdrPerformanceResultKey,
+            qcdrMeasureIds
+          ) as measures
+        "
+      >
+        <div class="ProviderMeasures__section-divider"></div>
+        <div class="ProviderMeasures__measures-section">
+          <!-- prettier-ignore -->
+          <h3
+            class="ProviderMeasures__section-title"
+            i18n="@@ProviderMeasuresGroupPracticePerformance__qcdr-label"
+            >Performance scores from partner organizations</h3
+          >
+          <!-- prettier-ignore -->
+          <ccxp-read-more
+            class="ProviderMeasures__section-description"
+            i18n="@@ProviderMeasuresGroupPracticePerformance__qcdr-description"
+            >These performance scores are based on information this group reported to Medicare through a Qualified Clinical Data Registry (QCDR). A QCDR is a Medicare partner organization that is committed to improving the quality of patient care. These performance scores were reported by the group to Medicare through a Qualified Clinical Data Registry.</ccxp-read-more
+          >
+          <mat-accordion multi>
+            <ng-container *ngFor="let measure of measures">
+              <ccxp-provider-measures-state-national-row
+                [hasMeasureDescription]="true"
+                [measure]="measure"
+                [showStateValue]="false"
+                [showNationalValue]="false"
+                [valueIsPercentage]="true"
+              >
+                <!-- prettier-ignore -->
+                <span
+                  content-type="measure-label"
+                  i18n="@@ProviderMeasuresGroupPracticePerformance__qcdr__measure-label"
+                  >{measure.measureId, select,
+                    QCDR_GRP_ABG16_overall {Ensuring the availability of special airway equipment prior to surgery}
+                    QCDR_GRP_ABG21_overall {Checking for sleep apnea before giving anesthesia}
+                    QCDR_GRP_ACEP21_overall {Avoiding unnecessary blood clotting tests in patients with chest pain}
+                    QCDR_GRP_AQI37_overall {Completing a safety checklist before giving anesthesia}
+                    QCDR_GRP_GIQIC12_overall {Performing colonoscopies for appropriate reasons}
+                    QCDR_GRP_RPAQIR13_overall {Sharing patient records with referring clinicians and dialysis facilities}}</span
+                >
+                <!-- prettier-ignore -->
+                <ccxp-higher-or-lower-is-better
+                  content-type="measure-helper-text"
+                  [higherIsBetterPhrase]="HigherIsBetterPhrase.A_HIGHER_SCORE_IS_BETTER"
+                ></ccxp-higher-or-lower-is-better>
+                <!-- prettier-ignore -->
+                <span
+                  content-type="measure-description"
+                  i18n="@@ProviderMeasuresGroupPracticePerformance__qcdr__measure-description"
+                  >{measure.measureId, select,
+                    QCDR_GRP_ABG16_overall {A higher score is better because it means clinicians in this group were prepared with the proper equipment to manage patients' respiratory health during surgery. Airway management is critical to a patient's overall health during surgery, and having the necessary equipment readily available is an important part of surgical preparation. To give this group a score, Medicare looked at the percentage of this group's patients who were treated with special airway management equipment that was in the operating room prior to surgery.}
+                    QCDR_GRP_ABG21_overall {A higher score is better because it means clinicians in this group checked more patients for sleep apnea before giving anesthesia. Obstructive sleep apnea (airway blockage during sleep) can cause complications after a patient receives anesthesia. Identifying patients who are at risk for sleep apnea allows clinicians to take appropriate precautions to avoid complications. To give this group a score, Medicare looked at the percentage of this group's patients who were evaluated for sleep apnea before receiving anesthesia.}
+                    QCDR_GRP_ACEP21_overall {A higher score is better because it means clinicians in this group avoided ordering unnecessary blood clotting tests for patients with chest pain. Sometimes blood clotting tests ordered as part of a routine blood panel do not provide value to the patient. Reducing these unnecessary tests can improve efficiency and limit unnecessary cost. To give this group a score, Medicare looked at the percentage of this group's emergency department patients with chest pain who did not have coagulation studies ordered when they were not clinically indicated.}
+                    QCDR_GRP_AQI37_overall {A higher score is better because it means clinicians in this group completed a surgical safety checklist for more patients before giving anesthesia. Surgical safety checklists help confirm that surgery is performed on the correct patient, uses the correct equipment, and that risk factors like allergies have been discussed and addressed. Use of a surgical safety checklist can reduce the risk of complications from surgery. To give this group a score, Medicare looked at the percentage of this group's patients who had surgical safety checklists completed before starting anesthesia.}
+                    QCDR_GRP_GIQIC12_overall {A higher score is better because it means clinicians in this group performed more colonoscopies for appropriate reasons. When a colonoscopy is done for appropriate reasons, clinicians can make better diagnoses. To give this group a score, Medicare looked at the percentage of colonoscopies clinicians in this group performed that were for clinically appropriate reasons.}
+                    QCDR_GRP_RPAQIR13_overall {A higher score is better because it means that clinicians in this group promptly sent documentation to the referring clinician or dialysis facility for more patients who had a renal consultation or procedure. When care is coordinated across physicians and other clinicians, patients can avoid redundant tests and unnecessary hospital visits. To give this group a score, Medicare looked at the percentage of this group's patients who had renal consultations or procedures whose medical records were sent to the referring clinician or dialysis facility within two days of the patient leaving the hospital.}}</span
+                >
+              </ccxp-provider-measures-state-national-row>
+            </ng-container></mat-accordion
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</ccxp-provider-measures-container>
