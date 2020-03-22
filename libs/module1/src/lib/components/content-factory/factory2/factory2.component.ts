@@ -10,13 +10,12 @@ import {
   Input
 } from '@angular/core';
 
-import { ContentComponentBase } from '../../content.component.base';
-import { ContentType } from '@ie11-i18n/module2';
+import { ContentComponentBase, ContentType } from '@ie11-i18n/module2';
 import { Content3Component } from './content3/content3.component';
 import { Content4Component } from './content4/content4.component';
 
 @Component({
-  selector: 'ie11-i18n-factory2',
+  selector: 'ie11-i18n-module1-factory2',
   template: ''
 })
 export class Factory2Component implements OnInit, OnChanges {

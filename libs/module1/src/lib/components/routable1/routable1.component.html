@@ -2,13 +2,23 @@
 
 <a class="block" routerLink="/" i18n="@@Routable1__home-link">Back to Home</a>
 
-<button
-  class="block"
-  mat-flat-button
-  color="primary"
-  (click)="openModal1()"
-  i18n="Routable1__btn-modal1"
-  >Open Modal 1</button
+<div>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="openModal1()"
+    i18n="Routable1__btn-modal1"
+    >Open Modal 1</button
+  >
+
+  <button
+    style="margin-left: 20px"
+    mat-flat-button
+    color="primary"
+    (click)="openModal2()"
+    i18n="Routable1__btn-modal2"
+    >Open Modal 2</button
+  ></div
 >
 
 <hr />
@@ -46,7 +56,6 @@
       Z {Got Z: Aliqua ut magna qui est.}
     }</span>
   </div>
-
 
   <!-- prettier-ignore -->
   <div>

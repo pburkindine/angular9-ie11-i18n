@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchEnum } from '@ie11-i18n/module2';
+import { Modal2Component, SwitchEnum } from '@ie11-i18n/module2';
 import { MatDialog } from '@angular/material/dialog';
 import { Modal1Component } from '../modal1/modal1.component';
 
@@ -22,5 +22,9 @@ export class Routable1Component implements OnInit {
 
   openModal1(): void {
     this.matDialog.open(Modal1Component);
+  }
+
+  openModal2(): void {
+    this.matDialog.open(Modal2Component);
   }
 }

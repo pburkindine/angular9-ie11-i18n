@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchEnum } from '@ie11-i18n/module2';
-import { ContentComponentBase } from '../../../content.component.base';
+import { ContentComponentBase } from '@ie11-i18n/module2';
 
 @Component({
-  selector: 'ie11-i18n-content14',
+  selector: 'ie11-i18n-module1-content14',
   templateUrl: './content14.component.html'
 })
-export class Content14Component extends ContentComponentBase implements OnInit {}
+export class Content14Component extends ContentComponentBase
+  implements OnInit {}

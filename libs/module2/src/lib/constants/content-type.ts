@@ -14,5 +14,6 @@ export enum ContentType {
   CONTENT_13,
   CONTENT_14,
   CONTENT_15,
-  CONTENT_16
+  CONTENT_16,
+  CONTENT_17
 }
