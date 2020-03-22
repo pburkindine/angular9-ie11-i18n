@@ -45,14 +45,21 @@ for (let i = 0; i < 100; i = i + 1) {
   routable1Template = routable1Template + populateTemplate('Routable1', i);
 }
 
-fs.writeFile('./routable1.html', routable1Template, err => console.log(err));
+// fs.writeFile('./routable1.html', routable1Template, err => console.log(err));
 
 // Content
 for (let c = 1; c < 17; c = c + 1) {
   let contentTemplate = '';
   for (let i = 0; i < 100; i = i + 1) {
-    contentTemplate = contentTemplate + populateTemplate(`Content${c}`, i);
+    contentTemplate =
+      contentTemplate + populateTemplate(`Module2Content${c}`, i);
   }
 
-  fs.writeFile(`./content${c}.html`, contentTemplate, err => console.log(err));
+  fs.writeFile(
+    `./content${c}.html`,
+    `<div class="content">
+  ${contentTemplate}
+  </div>`,
+    err => console.log(err)
+  );
 }
