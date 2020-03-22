@@ -82,10 +82,7 @@
               "apps/ie11-i18n/tsconfig.app.json",
               "apps/ie11-i18n/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/ie11-i18n/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/ie11-i18n/**"]
           }
         },
         "test": {
@@ -120,13 +117,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/ie11-i18n-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/ie11-i18n-e2e/**"
-            ]
+            "tsConfig": ["apps/ie11-i18n-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/ie11-i18n-e2e/**"]
           }
         }
       }
@@ -144,10 +136,7 @@
               "libs/module1/tsconfig.lib.json",
               "libs/module1/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/module1/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/module1/**"]
           }
         },
         "test": {
@@ -157,6 +146,34 @@
             "tsConfig": "libs/module1/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/module1/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "module2": {
+      "projectType": "library",
+      "root": "libs/module2",
+      "sourceRoot": "libs/module2/src",
+      "prefix": "ie11-i18n",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/module2/tsconfig.lib.json",
+              "libs/module2/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/module2/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/module2/jest.config.js",
+            "tsConfig": "libs/module2/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/module2/src/test-setup.ts"
           }
         }
       },

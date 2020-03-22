@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { ContentComponentBase } from '../../content.component.base';
-import { ContentType } from '../../../constants/content-type';
+import { ContentType } from '@ie11-i18n/module2';
 import { Content11Component } from './content11/content11.component';
 import { Content12Component } from './content12/content12.component';
 

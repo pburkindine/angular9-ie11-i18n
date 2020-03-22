@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ie11-i18n/module1": ["libs/module1/src/index.ts"]
+      "@ie11-i18n/module1": ["libs/module1/src/index.ts"],
+      "@ie11-i18n/module2": ["libs/module2/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

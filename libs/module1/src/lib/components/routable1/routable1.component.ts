@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchEnum } from '../../constants';
+import { SwitchEnum } from '@ie11-i18n/module2';
 import { MatDialog } from '@angular/material/dialog';
 import { Modal1Component } from '../modal1/modal1.component';
 

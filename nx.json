@@ -20,6 +20,9 @@
     },
     "module1": {
       "tags": []
+    },
+    "module2": {
+      "tags": []
     }
   }
 }

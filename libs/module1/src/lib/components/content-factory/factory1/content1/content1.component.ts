@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchEnum } from '../../../../constants';
+import { SwitchEnum } from  '@ie11-i18n/module2';
 import { ContentComponentBase } from '../../../content.component.base';
 
 @Component({

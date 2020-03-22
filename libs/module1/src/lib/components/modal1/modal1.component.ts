@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContentType } from '../../constants/content-type';
+import { ContentType } from '@ie11-i18n/module2';
 
 @Component({
   selector: 'ie11-i18n-modal1',

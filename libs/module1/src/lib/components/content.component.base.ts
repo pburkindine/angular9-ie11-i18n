@@ -1,6 +1,6 @@
 import { Directive, OnInit } from '@angular/core';
 
-import { SwitchEnum } from '../constants';
+import { SwitchEnum } from '@ie11-i18n/module2';
 
 @Directive()
 export abstract class ContentComponentBase implements OnInit {
